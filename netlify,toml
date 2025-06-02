@@ -1,7 +1,6 @@
 [build]
-  command = "npm install && npm install sharp --platform=linuxmusl --arch=x64 && npm run build"
+  command = "npm install && npm run build"
   publish = "build"
 
 [build.environment]
   NODE_VERSION = "16"
-  SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
