@@ -24,9 +24,9 @@ function css( done ) {
 }
 
 function imagenes() {
-    return src('src/img/**/*')
-        .pipe( imagemin({ optimizationLevel: 3 }) )
-        .pipe( dest('build/img') )
+  return gulp.src('src/img/**/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('build/img'));
 }
 
 function versionWebp() {

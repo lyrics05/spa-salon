@@ -1,5 +1,5 @@
 [build]
-  command = "npm install sharp && npm run build"
+  command = "npm install && npm install sharp --platform=linuxmusl --arch=x64 && npm run build"
   publish = "build"
 
 [build.environment]
