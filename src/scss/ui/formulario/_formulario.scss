@@ -1,0 +1,155 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  overflow-y: auto; /* Permite scroll si el contenido es muy largo */
+  padding: 20px; /* Espacio alrededor del modal en pantallas pequeñas */
+
+  &.active {
+    display: flex;
+    opacity: 1;
+  } 
+}
+
+.titulo-cita{
+  display: flex;
+  justify-content: space-between;
+}
+
+.titulo-cita h2{
+  color: #e082a8;
+}
+.titulo-cita span{
+  color: #555;
+  font-weight: 400;
+}
+
+.modal-cerrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+   background-color: #e082a8;
+    color: white;
+    cursor: pointer;
+    display: inline;
+    text-transform: uppercase;
+    height: 35px;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+
+.contact__button{
+    background-color: #e082a8;
+   color: white;
+}
+
+.modal-contenedor {
+  background-color: white;
+  padding: 3rem; /* Más espacio interno */
+  border-radius: 12px; /* Bordes más redondeados */
+  width: 90%;
+  max-width: 800px; /* Más ancho que antes */
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+  animation: modalEntrada 0.4s ease;
+  margin: auto; /* Centrado adicional */
+  transform: translateY(0); /* Reset para la animación */
+  
+  /* Asegura que el modal no sea más alto que la ventana */
+  max-height: 90vh;
+  overflow-y: auto; /* Scroll interno si el contenido es muy largo */
+
+  .modal-titulo {
+    font-size: 2rem; /* Título más grande */
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+    font-weight: 700;
+  }
+}
+
+/* Resto de tus estilos... */
+
+.contact__form {
+  width: 100%;
+  
+  .contact__input {
+    width: 100%;
+    margin-bottom: 1.5rem; /* Más espacio entre campos */
+    padding: 1rem; /* Campos más grandes */
+    font-size: 1.1rem; /* Texto más grande */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    
+    &:focus {
+      outline: none;
+      border-color: #aaa;
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  textarea.contact__input {
+    min-height: 150px; /* Área de texto más grande */
+  }
+  
+  .contact__button {
+    width: 100%;
+    padding: 1.2rem; /* Botón más grande */
+    font-size: 1.6rem;
+    background-color: #e082a8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 1rem;
+    
+    &:hover {
+      background-color: #da2e72;
+      transform: translateY(-2px);
+    }
+  } 
+}
+
+#status-message {
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#status-message.success {
+    background-color: #da2e72;
+    color: white;
+    border: 1px solid #c3e6cb;
+}
+
+#status-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@keyframes modalEntrada {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
