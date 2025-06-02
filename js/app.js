@@ -7,6 +7,10 @@ const formulario = document.querySelector("#contact-form")
 crearCita.addEventListener("click", mostrarModalCita);
 btn_cerraModal.addEventListener("click", closeModal);
 
+const emailUser = process.env.EMAILJS_USER;
+const serviceID = process.env.SERVICE_ID;
+const templateID = process.env.TEMPLATE_ID;
+
 function mostrarModalCita(e) {
     e.preventDefault();
     divModalCita.classList.add("active");
@@ -19,7 +23,7 @@ function closeModal(e) {
 
 // EmailJS Initialization
 document.addEventListener("DOMContentLoaded", function() {
-    emailjs.init("bBGhfBvDXufkgjeVw"); // Tu User ID
+    emailjs.init(emailUser); // Tu User ID
     
     document.getElementById("contact-form").addEventListener("submit", function(event) {
         event.preventDefault();
@@ -40,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         
         // Envío del formulario
-        emailjs.sendForm("service_u30wc2h", "template_c4uuogc", this)
+        emailjs.sendForm(serviceID, templateID, this)
             .then(function() {
                 showStatusMessage("Mensaje enviado te Contactaremos lo Antes Posible", "success");
                 
