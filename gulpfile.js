@@ -37,15 +37,16 @@ function versionWebp() {
         .pipe( webp( opciones ) )
         .pipe( dest('build/img') )
 }
-function versionAvif() {
-    const opciones = {
-        quality: 50
-    }
-    return src('src/img/**/*.{png,jpg}')
-        .pipe( avif( opciones ) )
-        .pipe( dest('build/img'))
-}
 
+function versionAvif() {
+  return gulp.src('src/img/**/*.{png,jpg}')
+    .pipe(avif({
+      quality: 50,
+      speed: 0,
+      lossless: false // Añade esta opción
+    }))
+    .pipe(gulp.dest('build/img'));
+}
 function dev() {
     watch( 'src/scss/**/*.scss', css );
     watch( 'src/img/**/*', imagenes );

@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp imagenes && gulp versionWebp && gulp versionAvif && gulp css",
-    "build:avif": "gulp imagenes && gulp versionWebp && gulp versionAvif && gulp css"
+    "build": "gulp imagenes && gulp versionWebp && gulp versionAvif && gulp css"
   },
   "author": "Juan De la torre @codigoconjuan",
   "license": "ISC",
