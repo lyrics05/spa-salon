@@ -56,9 +56,14 @@ function dev() {
     watch('src/img/**/*', imagenes);
 }
 
-exports.css = css;
-exports.dev = dev;
-exports.imagenes = imagenes;
-exports.versionWebp = versionWebp;
-exports.versionAvif = versionAvif;
-exports.default = series(imagenes, versionWebp, versionAvif, css, dev);
+function javascript() {
+    return src('src/js/**/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(/* tus transforms aquí (babel, etc) */)
+        .pipe(sourcemaps.write('.'))
+        .pipe(dest('build/js'));
+}
+
+exports.build = series(imagenes, versionWebp, versionAvif, css, javascript);
+exports.dev = series(exports.build, dev); // Primero build, luego watch
+exports.default = exports.build; // Por defecto ejecuta build

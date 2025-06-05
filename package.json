@@ -4,8 +4,9 @@
   "description": "Delivery App, BEM, SASS, Gulp, CSS Grid",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp"
+     "test": "echo \"Error: no test specified\" && exit 1",
+     "build": "gulp build",
+     "dev": "gulp dev"
   },
   "author": "Juan De la torre @codigoconjuan",
   "license": "ISC",
