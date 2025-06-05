@@ -58,18 +58,21 @@ function dev() {
     watch('src/scss/**/*.scss', css);
     watch('src/img/**/*', imagenes);
 }
-
+function html() {
+  return src('src/*.html') // Copia todos los HTML
+    .pipe(dest('build'));
+}
 function javascript() {
-    return src('src/js/**/*.js')
-        .pipe(sourcemaps.init())
-        .pipe(replace('process.env.EMAILJS_USER', `"${process.env.EMAILJS_USER}"`))
-        .pipe(replace('process.env.SERVICE_ID', `"${process.env.SERVICE_ID}"`))
-        .pipe(replace('process.env.TEMPLATE_ID', `"${process.env.TEMPLATE_ID}"`))
-        .pipe(terser()) // Minifica el código
-        .pipe(sourcemaps.write('.'))
-        .pipe(dest('build/js'));
+  return src('src/js/**/*.js')
+    .pipe(sourcemaps.init())
+    .pipe(replace('process.env.EMAILJS_USER', `"${process.env.EMAILJS_USER}"`))
+    .pipe(replace('process.env.SERVICE_ID', `"${process.env.SERVICE_ID}"`))
+    .pipe(replace('process.env.TEMPLATE_ID', `"${process.env.TEMPLATE_ID}"`))
+    .pipe(terser())
+    .pipe(sourcemaps.write('.'))
+    .pipe(dest('build/js'));
 }
 
-exports.build = series(imagenes, versionWebp, versionAvif, css, javascript);
+exports.build = series(imagenes, versionWebp, versionAvif, css, javascript,html);
 exports.dev = series(exports.build, dev); // Primero build, luego watch
 exports.default = exports.build; // Por defecto ejecuta build
