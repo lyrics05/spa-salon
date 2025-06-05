@@ -17,16 +17,13 @@ const avif = require('gulp-avif');
 
 // Detectar si estamos en Netlify
 const isNetlify = process.env.NETLIFY === 'true';
-
-function css(done) {
-    src('src/scss/app.scss')
+function css() {
+    return src('src/scss/app.scss')  // Cambiado para ser consistente
         .pipe(sourcemaps.init())
-        .pipe(sass())
+        .pipe(sass().on('error', sass.logError))
         .pipe(postcss([autoprefixer(), cssnano()]))
         .pipe(sourcemaps.write('.'))
-        .pipe(dest('build/css'));
-
-    done();
+        .pipe(dest('build/css'));  // Asegúrate que es build/ no src/build/
 }
 
 function imagenes() {
@@ -59,18 +56,18 @@ function dev() {
     watch('src/img/**/*', imagenes);
 }
 function html() {
-  return src('src/*.html') // Copia todos los HTML
-    .pipe(dest('build'));
+    return src('src/index.html')  // Especifica el archivo exacto
+        .pipe(dest('build'));
 }
 function javascript() {
-  return src('src/js/**/*.js')
-    .pipe(sourcemaps.init())
-    .pipe(replace('process.env.EMAILJS_USER', `"${process.env.EMAILJS_USER}"`))
-    .pipe(replace('process.env.SERVICE_ID', `"${process.env.SERVICE_ID}"`))
-    .pipe(replace('process.env.TEMPLATE_ID', `"${process.env.TEMPLATE_ID}"`))
-    .pipe(terser())
-    .pipe(sourcemaps.write('.'))
-    .pipe(dest('build/js'));
+    return src('src/js/app.js')  // Especifica el archivo exacto
+        .pipe(sourcemaps.init())
+        .pipe(replace('process.env.EMAILJS_USER', `"${process.env.EMAILJS_USER}"`))
+        .pipe(replace('process.env.SERVICE_ID', `"${process.env.SERVICE_ID}"`))
+        .pipe(replace('process.env.TEMPLATE_ID', `"${process.env.TEMPLATE_ID}"`))
+        .pipe(terser())
+        .pipe(sourcemaps.write('.'))
+        .pipe(dest('build/js'));
 }
 
 exports.build = series(imagenes, versionWebp, versionAvif, css, javascript,html);
