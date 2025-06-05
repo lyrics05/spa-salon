@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "16"
+  EMAILJS_USER = "@emailjs_user"
+  SERVICE_ID = "@service_id"
+  TEMPLATE_ID = "@template_id"

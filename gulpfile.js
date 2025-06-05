@@ -6,6 +6,9 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const cssnano = require('cssnano');
+const terser = require('gulp-terser');
+const replace = require('gulp-replace');
+require('dotenv').config();
 
 // Imágenes
 const imagemin = require('gulp-imagemin');
@@ -59,7 +62,10 @@ function dev() {
 function javascript() {
     return src('src/js/**/*.js')
         .pipe(sourcemaps.init())
-        .pipe(/* tus transforms aquí (babel, etc) */)
+        .pipe(replace('process.env.EMAILJS_USER', `"${process.env.EMAILJS_USER}"`))
+        .pipe(replace('process.env.SERVICE_ID', `"${process.env.SERVICE_ID}"`))
+        .pipe(replace('process.env.TEMPLATE_ID', `"${process.env.TEMPLATE_ID}"`))
+        .pipe(terser()) // Minifica el código
         .pipe(sourcemaps.write('.'))
         .pipe(dest('build/js'));
 }
