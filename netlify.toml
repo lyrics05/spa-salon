@@ -4,6 +4,6 @@
 
 [build.environment]
   NODE_VERSION = "16"
-  EMAILJS_USER = "@emailjs_user"
-  SERVICE_ID = "@service_id"
-  TEMPLATE_ID = "@template_id"
+  EMAILJS_USER = "emailjs_user"
+  SERVICE_ID = "service_id"
+  TEMPLATE_ID = "template_id"
