@@ -18,12 +18,12 @@ const avif = require('gulp-avif');
 // Detectar si estamos en Netlify
 const isNetlify = process.env.NETLIFY === 'true';
 function css() {
-    return src('src/scss/app.scss')  // Cambiado para ser consistente
-        .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
-        .pipe(postcss([autoprefixer(), cssnano()]))
-        .pipe(sourcemaps.write('.'))
-        .pipe(dest('build/css'));  // Asegúrate que es build/ no src/build/
+  return src('src/scss/app.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss([autoprefixer(), cssnano()]))
+    .pipe(sourcemaps.write('.'))
+    .pipe(dest('build/css'));
 }
 
 function imagenes() {
@@ -56,8 +56,11 @@ function dev() {
     watch('src/img/**/*', imagenes);
 }
 function html() {
-    return src('src/index.html')  // Especifica el archivo exacto
-        .pipe(dest('build'));
+  return src('src/index.html')
+    .pipe(replace(/href="(.*?\/)?build\//g, 'href="build/')) // Normaliza rutas CSS
+    .pipe(replace(/src="(.*?\/)?build\//g, 'src="build/')) // Normaliza rutas de imágenes
+    .pipe(replace('src="js/', 'src="build/js/')) // Corrige ruta de JS
+    .pipe(dest('build'));
 }
 function javascript() {
     return src('src/js/app.js')  // Especifica el archivo exacto

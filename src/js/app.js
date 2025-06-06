@@ -4,6 +4,8 @@ const divModalCita = document.querySelector("#modal-cita");
 const btn_cerraModal = document.querySelector("#cerrar-modal");
 const formulario = document.querySelector("#contact-form")
 
+console.log("holallllllllllllllllllllllllllllllllll")
+
 crearCita.addEventListener("click", mostrarModalCita);
 btn_cerraModal.addEventListener("click", closeModal);
 
