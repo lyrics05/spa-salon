@@ -4,14 +4,12 @@ const divModalCita = document.querySelector("#modal-cita");
 const btn_cerraModal = document.querySelector("#cerrar-modal");
 const formulario = document.querySelector("#contact-form")
 
-console.log("holallllllllllllllllllllllllllllllllll")
-
 crearCita.addEventListener("click", mostrarModalCita);
 btn_cerraModal.addEventListener("click", closeModal);
 
-const emailUser = process.env.EMAILJS_USER;
-const serviceID = process.env.SERVICE_ID;
-const templateID = process.env.TEMPLATE_ID;
+const emailUser = "bBGhfBvDXufkgjeVw"
+const serviceID = "service_u30wc2h"
+const templateID = "template_c4uuogc"
 
 function mostrarModalCita(e) {
     e.preventDefault();
