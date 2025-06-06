@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx gulp build",
-    "dev": "gulp dev"
+    "dev": "npx gulp dev"
   },
   "author": "Juan De la torre @codigoconjuan",
   "license": "ISC",
