@@ -8,7 +8,7 @@
   status = 200
 
 [build.environment]
-  NODE_VERSION = "16"
+  NODE_VERSION = "20"
   NODE_ENV = "production"
 
   EMAILJS_USER = "@emailjs_user"
