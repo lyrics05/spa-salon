@@ -12,9 +12,9 @@
   NODE_VERSION = "20"
   NODE_ENV = "production"
 
-  EMAILJS_USER = "@emailjs_user"
-  SERVICE_ID = "@service_id"
-  TEMPLATE_ID = "@template_id"
+  EMAILJS_USER = "emailjs_user"
+  SERVICE_ID = "service_id"
+  TEMPLATE_ID = "template_id"
 
 [[headers]]
   for = "/build/*"
