@@ -1,7 +1,6 @@
 [build]
-  command = "npm run build"
+  command = "npm install && npm run build"
   publish = "build"
-
 
 [[redirects]]
   from = "/*"
@@ -11,7 +10,8 @@
 [build.environment]
   NODE_VERSION = "20"
   NODE_ENV = "production"
-
+  
+  # Tus variables de entorno reales
   EMAILJS_USER = "emailjs_user"
   SERVICE_ID = "service_id"
   TEMPLATE_ID = "template_id"
