@@ -8,8 +8,9 @@
   status = 200
 
 [build.environment]
-  NODE_VERSION = "16"
-  NODE_ENV = "production"
+  NODE_VERSION = "20"
+  NODE_ENV = "development"
+  NPM_FLAGS = "--include=dev"
   
   # Tus variables de entorno reales
   EMAILJS_USER = "emailjs_user"
